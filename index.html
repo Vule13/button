@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Toggle Button</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <style>
+    /* styles.css */
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 150px;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 50px;
+    }
+
+    .toggle input[type="checkbox"] {
+      display: none;
+    }
+
+    .toggle__slider {
+      position: absolute;
+      width: 100%;
+      cursor: pointer;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 30px;
+      border: 1px solid rgba(81, 81, 81, 0.3);
+      transition: background-color 0.3s;
+    }
+
+    .toggle__slider::before {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 90%;
+      background-color: #886cff;
+      border-radius: 30px;
+
+      transition: left 0.3s;
+      top: 3px;
+      left: 3px;
+    }
+
+    .toggle input[type="checkbox"]:checked + .toggle__slider::before {
+      left: 48%;
+    }
+
+    .toggle__label-on,
+    .toggle__label-off {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.3s;
+      cursor: pointer;
+      color: #886cff;
+    }
+
+    .toggle__label-on {
+      left: 17px;
+      opacity: 1;
+    }
+
+    .toggle__label-off {
+      right: 17px;
+      opacity: 1;
+    }
+
+    .toggle input[type="checkbox"]:checked + .toggle__slider .toggle__label-on {
+      opacity: 0;
+    }
+
+    .toggle
+      input[type="checkbox"]:checked
+      + .toggle__slider
+      .toggle__label-off {
+      opacity: 1;
+    }
+    .toggle input[type="checkbox"]:checked ~ .toggle__label-off {
+      color: #fff;
+    }
+    .toggle input[type="checkbox"]:checked ~ .toggle__label-on {
+      color: #886cff;
+    }
+    .toggle input[type="checkbox"] ~ .toggle__label-on {
+      color: #fff;
+    }
+  </style>
+  <body>
+    <label class="toggle">
+      <input type="checkbox" id="toggleCheckbox" />
+      <div class="toggle__slider"></div>
+      <span class="toggle__label-on">Montly</span>
+      <span class="toggle__label-off">Yearly</span>
+    </label>
+  </body>
+</html>
